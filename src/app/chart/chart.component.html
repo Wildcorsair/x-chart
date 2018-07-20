@@ -1,15 +1,24 @@
 <div class="x-chart-wrapper">
-    <svg (mousemove)="move($event)" class="x-chart" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2" width="600" height="400" viewBox="0 0 600 400" aria-labelledby="title" role="img">
+    <svg (mousemove)="move($event)" class="x-chart" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2" width="620" height="400" viewBox="0 0 620 400" aria-labelledby="title" role="img">
         <g class="axis-y">
           <line x1="50" y1="40" x2="50" y2="350" stroke="#0000ff" />
         </g>
         <g>
-          <text *ngIf="displayMinValue" class="axis-x-value" x="15" y="350">{{ minValue }}</text>
-          <text *ngFor="let v of axisYLeft; let i = index" appAxisValue class="axis-value" x="15" attr.y="{{ 350 - i }}">{{ v }}</text>
-          <text *ngIf="displayMaxValue" class="axis-x-value" x="15" y="50">{{ maxValue }}</text>
+          <text *ngIf="displayMinValue" class="axis-x-value" x="13" y="350">{{ minValue }}</text>
+          <text *ngFor="let v of axisYLeft; let i = index" appAxisValue class="axis-value" x="13" attr.y="{{ 350 - i }}">{{ v }}</text>
+          <text *ngIf="displayMaxValue" class="axis-x-value" x="13" y="50">{{ maxValue }}</text>
         </g>
+
+        <!-- Axis Y2 -->
         <g class="axis-y">
             <line x1="550" y1="45" x2="550" y2="350" stroke="#0000ff" />
+        </g>
+
+        <!-- Axis Y2 Values -->
+        <g>
+          <text *ngIf="displayMinY2Value" class="axis-x-value" x="560" y="350">{{ minY2Value }}</text>
+          <text *ngFor="let v of axisYRight; let i = index" appAxisY2Value class="axis-value" x="560" attr.y="{{ 350 - i }}">{{ v }}</text>
+          <text *ngIf="displayMaxY2Value" class="axis-x-value" x="560" y="50">{{ maxY2Value }}</text>
         </g>
 
         <g class="axis-x">
@@ -19,21 +28,23 @@
         </g>
 
         <g *ngFor="let v of axisX; let i = index">
-          <text appAxisXValue class="axis-value" attr.x="{{ 60 + stepX * i }}" y="362">{{ v }}</text>
+          <text appAxisXValue class="axis-value" attr.x="{{ 60 + offset * i }}" y="362">{{ v }}</text>
         </g>
 
+        <!-- Chart Rectangles -->
         <g>
           <rect class="column" *ngFor="let column of columns; let i = index" attr.x="{{ 70 + offset * i }}" attr.y="{{ column.coord }}" attr.width="{{ columnWidth }}" attr.height="{{ 350 - column.coord }}" />
         </g>
 
+        <!-- Chart Line -->
         <g class="chart-area">
           <path attr.d="{{ line }}" class="chart-line" />
         </g>
 
-        <g>
+        <!-- Chart Circles -->
+        <!-- <g>
           <circle *ngFor="let point of data; let i = index" attr.cx="{{ 70 + (offset * i) }}" attr.cy="{{ point.coord }}" r="3" style="fill: #48d82a" />
-        </g>
-
+        </g> -->
 
         <line *ngIf="displayAxis" class="cross-hair" x1="50" attr.y1="{{ y - 9 }}" x2="550" attr.y2="{{ y - 9 }}" />
         <line *ngIf="displayAxis" class="cross-hair" attr.x1="{{ x - 8 }}" y1="50" attr.x2="{{ x - 8 }}" y2="350" />

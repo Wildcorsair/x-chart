@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChildren, QueryList, ElementRef, Renderer2 } fro
 
 import { AxisValueDirective } from './axis-value.directive';
 import { AxisXValueDirective } from './axis-x-value.directive';
+import { AxisY2ValueDirective } from './axis-y2-value.directive';
 
 @Component({
   selector: 'app-chart',
@@ -94,125 +95,182 @@ export class ChartComponent implements OnInit {
     //   date: '2018-07-05',
     //   value: 6120
     // },
+    // {
+    //   date: '2018-07-06',
+    //   value: 5920
+    // },
+    // {
+    //   date: '2018-07-07',
+    //   value: 5850
+    // },
+    // {
+    //   date: '2018-07-08',
+    //   value: 5790
+    // },
+    // {
+    //   date: '2018-07-09',
+    //   value: 5550
+    // },
+    // {
+    //   date: '2018-07-10',
+    //   value: 5823
+    // },
+    // {
+    //   date: '2018-07-11',
+    //   value: 5985
+    // },
+    // {
+    //   date: '2018-07-12',
+    //   value: 7350
+    // },
+    // {
+    //   date: '2018-07-13',
+    //   value: 6450
+    // },
+    // {
+    //   date: '2018-07-14',
+    //   value: 5540
+    // },
+    // {
+    //   date: '2018-07-15',
+    //   value: 5680
+    // },
+    // {
+    //   date: '2018-07-16',
+    //   value: 4870
+    // },
+    // {
+    //   date: '2018-07-17',
+    //   value: 4600
+    // },
+    // {
+    //   date: '2018-07-18',
+    //   value: 4300
+    // }
+    // {
+    //   date: '2018-07-19',
+    //   value: 4400
+    // }
     {
       date: '2018-07-06',
-      value: 5920
+      value: 0.0290
     },
     {
       date: '2018-07-07',
-      value: 5850
+      value: 0.0320
     },
     {
       date: '2018-07-08',
-      value: 5790
+      value: 0.0330
     },
     {
       date: '2018-07-09',
-      value: 5550
+      value: 0.0360
     },
     {
       date: '2018-07-10',
-      value: 5823
+      value: 0.0380
     },
     {
       date: '2018-07-11',
-      value: 5985
+      value: 0.041
     },
     {
       date: '2018-07-12',
-      value: 7350
+      value: 0.043
     },
     {
       date: '2018-07-13',
-      value: 6450
+      value: 0.0290
     },
     {
       date: '2018-07-14',
-      value: 5540
+      value: 0.0320
     },
     {
       date: '2018-07-15',
-      value: 5680
+      value: 0.0330
     },
     {
       date: '2018-07-16',
-      value: 4870
+      value: 0.0360
     },
     {
       date: '2018-07-17',
-      value: 4600
+      value: 0.0380
     },
     {
       date: '2018-07-18',
-      value: 4300
-    }
+      value: 0.041
+    },
     {
       date: '2018-07-19',
-      value: 4400
+      value: 0.043
     }
   ];
 
   columns: any[] = [
     {
       date: '2018-07-06',
-      value: 126450
+      value: 12645000
     },
     {
       date: '2018-07-07',
-      value: 125540
+      value: 12554000
     },
     {
       date: '2018-07-08',
-      value: 125680
+      value: 12568000
     },
     {
       date: '2018-07-09',
-      value: 124870
+      value: 12487000
     },
     {
       date: '2018-07-10',
-      value: 129600
+      value: 12960000
     },
     {
       date: '2018-07-11',
-      value: 124300
+      value: 12430000
     },
     {
       date: '2018-07-12',
-      value: 127350
+      value: 12735000
     },
     {
       date: '2018-07-13',
-      value: 126450
+      value: 12645000
     },
     {
       date: '2018-07-14',
-      value: 125540
+      value: 12554000
     },
     {
       date: '2018-07-15',
-      value: 125680
+      value: 12568000
     },
     {
       date: '2018-07-16',
-      value: 124870
+      value: 12487000
     },
     {
       date: '2018-07-17',
-      value: 129600
+      value: 12960000
     },
     {
       date: '2018-07-18',
-      value: 124300
+      value: 12430000
     },
     {
       date: '2018-07-19',
-      value: 127350
+      value: 12735000
     }
   ];
 
   offset: number;
   axisYLeft: number[] = [];
+  axisYRight: number[] = [];
   axisX: string[] = [];
   displayValue: boolean = false;
   displayAxis: boolean = false;
@@ -229,8 +287,14 @@ export class ChartComponent implements OnInit {
   minValue: number;
   maxValue: number;
 
+  minY2Value: number;
+  maxY2Value: number;
+
   displayMinValue: boolean = true;
   displayMaxValue: boolean = true;
+
+  displayMinY2Value: boolean = true;
+  displayMaxY2Value: boolean = true;
 
   displayStartMonth: boolean = true;
   displayEndMonth: boolean = true;
@@ -239,17 +303,20 @@ export class ChartComponent implements OnInit {
 
   @ViewChildren(AxisValueDirective, { read: ElementRef }) axisValues: QueryList<ElementRef>;
   @ViewChildren(AxisXValueDirective, { read: ElementRef }) axisXValues: QueryList<ElementRef>;
+  @ViewChildren(AxisY2ValueDirective, { read: ElementRef }) axisY2Values: QueryList<ElementRef>;
 
   constructor(private renderer: Renderer2) { }
 
   ngOnInit() {
     this.interpolate();
     this.renderColumns();
-    this.axisYValues();
-    this.axisXValues();
+    this.calcAxisYValues();
+    this.calcAxisXValues();
+    this.calcAxisY2Values();
   }
 
   ngAfterViewInit() {
+    console.log(this.axisValues);
     // this.axisValues.forEach(value => console.log(value.nativeElement));
   }
 
@@ -258,6 +325,9 @@ export class ChartComponent implements OnInit {
     let elCount = this.data.length;
     let min = this.min(this.data);
     let max = this.max(this.data);
+
+    let diff = max - min;
+    min = min - diff;
 
     this.offset = Math.round(460 / (elCount - 1));
     // this.offset = Math.round((460 - this.columnWidth) / (elCount - 1));
@@ -277,9 +347,10 @@ export class ChartComponent implements OnInit {
     let elCount = this.columns.length;
     let min = this.min(this.columns);
     let max = this.max(this.columns);
+    let diff = max - min;
 
-    // this.columnWidth = Math.round((400 - (5 * elCount - 1)) / (elCount - 1));
-    // console.log(this.columnWidth);
+    min = min - diff;
+
     this.columnWidth = 1;
 
     this.columnOffset =  this.columnWidth + 5;
@@ -326,25 +397,58 @@ export class ChartComponent implements OnInit {
   /**
    * Calculates the Y axis values.
    */
-  axisYValues() {
+  calcAxisYValues() {
     let elCount = this.data.length;
     let max = this.max(this.data);
     let min = this.min(this.data);
     // console.log('Min: ', min, 'Max: ', max);
     let diff = max - min;
+
+    min = min - diff;
+    diff = max - min;
+
     let step = diff / 300;
     // console.log('Diff: ', diff, 'Step:', step);
 
-    
+    this.minValue = min.toFixed(4);
 
-    this.minValue = min;
-    this.maxValue = max;
-
-    this.axisYLeft.push(min);
+    this.axisYLeft.push(min.toFixed(4));
 
     while (min < max) {
       min = min + step;
-      this.axisYLeft.push(Math.trunc(min));
+      this.axisYLeft.push(min.toFixed(4));
+    }
+    this.maxValue = min.toFixed(4);
+
+    // while (min < max) {
+    //   min = min + step;
+    //   this.axisYLeft.push(Math.trunc(min));
+    // }
+    // this.maxValue = Math.trunc(min);
+
+    console.log(this.axisYLeft);
+  }
+
+  calcAxisY2Values() {
+    let elCount = this.columns.length;
+    let max = this.max(this.columns);
+    let min = this.min(this.columns);
+    // console.log('Min: ', min, 'Max: ', max);
+    let diff = max - min;
+
+    min = min - diff;
+    diff = max - min;
+
+    let step = diff / 300;
+
+    this.minY2Value = min;
+    this.maxY2Value = max;
+
+    this.axisYRight.push(min);
+
+    while (min < max) {
+      min = min + step;
+      this.axisYRight.push(Math.trunc(min));
     }
   }
 
@@ -387,7 +491,7 @@ export class ChartComponent implements OnInit {
   /**
    * Calculate X  axis values.
    */
-  axisXValues() {
+  calcAxisXValues() {
     let elCount = this.data.length;
     let minDateTimestamp = Date.parse(this.data[0].date);
     let maxDateTimestamp = Date.parse(this.data[elCount - 1].date);
@@ -436,7 +540,23 @@ export class ChartComponent implements OnInit {
       // Display end month name on the X axis, when cursor goes out the chart
       this.displayEndMonth = true;
 
+      this.displayMinY2Value = true;
+      this.displayMaxY2Value = true;
+
       this.displayAxis = false;
+
+      this.axisValues.forEach((value) => {
+        this.renderer.removeClass(value.nativeElement, 'show');
+      });
+
+      this.axisXValues.forEach((value) => {
+        this.renderer.removeClass(value.nativeElement, 'show');
+      });
+
+      this.axisY2Values.forEach((value) => {
+        this.renderer.removeClass(value.nativeElement, 'show');
+      });
+
     } else {
       this.displayAxis = true;
       this.axisValues.forEach((value, i) => {
@@ -461,6 +581,18 @@ export class ChartComponent implements OnInit {
           this.renderer.removeClass(value.nativeElement, 'show');
         }
       });
+
+      this.axisY2Values.forEach((value, i) => {
+        let y = value.nativeElement.attributes.y.value;
+
+        if ( y == this.y - 9) {
+          this.renderer.addClass(value.nativeElement, 'show');
+          this.hideMinY2Value(y);
+          this.hideMaxY2Value(y);
+        } else {
+          this.renderer.removeClass(value.nativeElement, 'show');
+        }
+      });
     }
 
   }
@@ -474,7 +606,7 @@ export class ChartComponent implements OnInit {
   }
 
   hideEndMonth(x) {
-    if (540 - x < 25) {
+    if (540 - x < 30) {
       this.displayEndMonth = false;
     } else {
       this.displayEndMonth = true;
@@ -494,6 +626,22 @@ export class ChartComponent implements OnInit {
       this.displayMaxValue = false;
     } else {
       this.displayMaxValue = true;
+    }
+  }
+
+  hideMinY2Value(y) {
+    if (350 - y < 15) {
+      this.displayMinY2Value = false;
+    } else {
+      this.displayMinY2Value = true;
+    }
+  }
+
+  hideMaxY2Value(y) {
+    if (y - 50 < 15) {
+      this.displayMaxY2Value = false;
+    } else {
+      this.displayMaxY2Value = true;
     }
   }
 }

@@ -1,11 +1,11 @@
 .x-chart-wrapper {
-    width: 600px;
+    width: 620px;
     height: 400px;
     border: 1px solid #ccc;
 }
 
 .x-chart {
-  cursor: cell;
+  cursor: crosshair;
 }
 
 .chart-point {
@@ -19,7 +19,7 @@
 }
 
 .chart-area {
-  cursor: cell;
+  cursor: crosshair;
 }
 
 .axis-value {

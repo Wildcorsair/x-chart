@@ -5,13 +5,15 @@ import { AppComponent } from './app.component';
 import { ChartComponent } from './chart/chart.component';
 import { AxisValueDirective } from './chart/axis-value.directive';
 import { AxisXValueDirective } from './chart/axis-x-value.directive';
+import { AxisY2ValueDirective } from './chart/axis-y2-value.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChartComponent,
     AxisValueDirective,
-    AxisXValueDirective
+    AxisXValueDirective,
+    AxisY2ValueDirective
   ],
   imports: [
     BrowserModule
