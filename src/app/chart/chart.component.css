@@ -1,0 +1,53 @@
+.x-chart-wrapper {
+    width: 600px;
+    height: 400px;
+    border: 1px solid #ccc;
+}
+
+.x-chart {
+  cursor: cell;
+}
+
+.chart-point {
+  display: block;
+}
+
+.chart-point:hover {
+  r: 5px;
+  stroke: #48d82a;
+  fill: #0000ff;
+}
+
+.chart-area {
+  cursor: cell;
+}
+
+.axis-value {
+  display: none;
+  cursor: default;
+  font-size: 12px;
+}
+
+.axis-x-value {
+  cursor: default;
+  font-size: 12px;
+}
+
+.show {
+  display: block;
+}
+
+.cross-hair {
+  stroke: #0305ff;
+  stroke-width: .2px;
+}
+
+.chart-line {
+  fill: none;
+  stroke: #2491d0;
+  stroke-width: 2;
+}
+
+.column {
+  fill: #9bcde9;
+}
