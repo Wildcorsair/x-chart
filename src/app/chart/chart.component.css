@@ -33,6 +33,12 @@
   font-size: 12px;
 }
 
+.axis-y-value {
+  cursor: default;
+  font-size: 12px;
+  text-anchor: end;
+}
+
 .show {
   display: block;
 }

@@ -152,6 +152,62 @@ export class ChartComponent implements OnInit {
     //   value: 4400
     // }
     {
+      date: '2018-06-22',
+      value: 0.0240
+    },
+    {
+      date: '2018-06-23',
+      value: 0.0220
+    },
+    {
+      date: '2018-06-24',
+      value: 0.0200
+    },
+    {
+      date: '2018-06-25',
+      value: 0.0220
+    },
+    {
+      date: '2018-06-26',
+      value: 0.0250
+    },
+    {
+      date: '2018-06-27',
+      value: 0.0270
+    },
+    {
+      date: '2018-06-28',
+      value: 0.0280
+    },
+    {
+      date: '2018-06-29',
+      value: 0.0290
+    },
+    {
+      date: '2018-06-30',
+      value: 0.0320
+    },
+    {
+      date: '2018-07-01',
+      value: 0.0300
+    },
+    {
+      date: '2018-07-02',
+      value: 0.0290
+    },
+    {
+      date: '2018-07-03',
+      value: 0.0260
+    },
+    {
+      date: '2018-07-04',
+      value: 0.0230
+    },
+    {
+      date: '2018-07-05',
+      value: 0.0250
+    },
+    {
       date: '2018-07-06',
       value: 0.0290
     },
@@ -206,11 +262,79 @@ export class ChartComponent implements OnInit {
     {
       date: '2018-07-19',
       value: 0.043
+    },
+    {
+      date: '2018-07-20',
+      value: 0.045
+    },
+    {
+      date: '2018-07-21',
+      value: 0.050
+    },
+    {
+      date: '2018-07-22',
+      value: 0.044
     }
   ];
 
   columns: any[] = [
     {
+      date: '2018-06-22',
+      value: 11970000
+    },
+    {
+      date: '2018-06-23',
+      value: 12160000
+    },
+    {
+      date: '2018-06-24',
+      value: 12450000
+    },
+    {
+      date: '2018-06-25',
+      value: 12850000
+    },
+    {
+      date: '2018-06-26',
+      value: 12970000
+    },
+    {
+      date: '2018-06-27',
+      value: 13080000
+    },
+    {
+      date: '2018-06-28',
+      value: 13145000
+    },
+    {
+      date: '2018-06-29',
+      value: 13233000
+    },
+    {
+      date: '2018-06-30',
+      value: 13140000
+    },
+    {
+      date: '2018-07-01',
+      value: 13045000
+    },
+    {
+      date: '2018-07-02',
+      value: 13045000
+    },
+    {
+      date: '2018-07-03',
+      value: 12960000
+    },
+    {
+      date: '2018-07-04',
+      value: 12845300
+    },
+    {
+      date: '2018-07-05',
+      value: 12759000
+    },
+    {
       date: '2018-07-06',
       value: 12645000
     },
@@ -265,6 +389,18 @@ export class ChartComponent implements OnInit {
     {
       date: '2018-07-19',
       value: 12735000
+    },
+    {
+      date: '2018-07-20',
+      value: 12450000
+    },
+    {
+      date: '2018-07-21',
+      value: 12265000
+    },
+    {
+      date: '2018-07-22',
+      value: 12168000
     }
   ];
 
@@ -273,7 +409,7 @@ export class ChartComponent implements OnInit {
   axisYRight: number[] = [];
   axisX: string[] = [];
   displayValue: boolean = false;
-  displayAxis: boolean = false;
+  displayCrosshair: boolean = false;
   x: number = 50;
   y: number = 50;
   line: string = 'M';
@@ -308,7 +444,7 @@ export class ChartComponent implements OnInit {
   constructor(private renderer: Renderer2) { }
 
   ngOnInit() {
-    this.interpolate();
+    this.renderLine();
     this.renderColumns();
     this.calcAxisYValues();
     this.calcAxisXValues();
@@ -316,12 +452,14 @@ export class ChartComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    console.log(this.axisValues);
+    // console.log(this.axisValues);
     // this.axisValues.forEach(value => console.log(value.nativeElement));
   }
 
-  // 50 350
-  interpolate() {
+  /**
+   * Render chart line.
+   */
+  renderLine() {
     let elCount = this.data.length;
     let min = this.min(this.data);
     let max = this.max(this.data);
@@ -329,9 +467,11 @@ export class ChartComponent implements OnInit {
     let diff = max - min;
     min = min - diff;
 
+    if (min < 0) {
+      min = 0;
+    }
+
     this.offset = Math.round(460 / (elCount - 1));
-    // this.offset = Math.round((460 - this.columnWidth) / (elCount - 1));
-    // this.chartLineStartCoord = 70 + (this.columnWidth / 2);
 
     for (let i = 0; i < elCount; i++) {
       this.data[i].coord = 400 - (50 + (this.data[i].value - min) / (max - min) * (350 - 50));
@@ -343,6 +483,9 @@ export class ChartComponent implements OnInit {
     }
   }
 
+  /**
+   * Render chart columns.
+   */
   renderColumns() {
     let elCount = this.columns.length;
     let min = this.min(this.columns);
@@ -350,6 +493,10 @@ export class ChartComponent implements OnInit {
     let diff = max - min;
 
     min = min - diff;
+
+    if (min < 0) {
+      min = 0;
+    }
 
     this.columnWidth = 1;
 
@@ -401,44 +548,45 @@ export class ChartComponent implements OnInit {
     let elCount = this.data.length;
     let max = this.max(this.data);
     let min = this.min(this.data);
-    // console.log('Min: ', min, 'Max: ', max);
     let diff = max - min;
 
     min = min - diff;
+
+    if (min < 0) {
+      min = 0;
+      this.minValue = min;
+      this.axisYLeft.push(min);
+    } else {
+      this.minValue = min.toFixed(4);
+      this.axisYLeft.push(min.toFixed(4));
+    }
+
     diff = max - min;
-
     let step = diff / 300;
-    // console.log('Diff: ', diff, 'Step:', step);
-
-    this.minValue = min.toFixed(4);
-
-    this.axisYLeft.push(min.toFixed(4));
 
     while (min < max) {
       min = min + step;
       this.axisYLeft.push(min.toFixed(4));
     }
     this.maxValue = min.toFixed(4);
-
-    // while (min < max) {
-    //   min = min + step;
-    //   this.axisYLeft.push(Math.trunc(min));
-    // }
-    // this.maxValue = Math.trunc(min);
-
-    console.log(this.axisYLeft);
   }
 
+  /**
+   * Calculate values for Y2 axis.
+   */
   calcAxisY2Values() {
     let elCount = this.columns.length;
     let max = this.max(this.columns);
     let min = this.min(this.columns);
-    // console.log('Min: ', min, 'Max: ', max);
     let diff = max - min;
 
     min = min - diff;
-    diff = max - min;
 
+    if (min < 0) {
+      min = 0;
+    }
+
+    diff = max - min;
     let step = diff / 300;
 
     this.minY2Value = min;
@@ -489,7 +637,7 @@ export class ChartComponent implements OnInit {
   }
 
   /**
-   * Calculate X  axis values.
+   * Calculate X axis values.
    */
   calcAxisXValues() {
     let elCount = this.data.length;
@@ -519,7 +667,6 @@ export class ChartComponent implements OnInit {
    * Mouse move event handler.
    *
    * @param {object} event Event object
-   *
    */
   move(event) {
     this.displayValue = true;
@@ -540,10 +687,12 @@ export class ChartComponent implements OnInit {
       // Display end month name on the X axis, when cursor goes out the chart
       this.displayEndMonth = true;
 
+      // Display min value on the Y axis, when cursor goes out the chart
       this.displayMinY2Value = true;
+      // Display max value on the Y2 axis, when cursor goes out the chart
       this.displayMaxY2Value = true;
 
-      this.displayAxis = false;
+      this.displayCrosshair = false;
 
       this.axisValues.forEach((value) => {
         this.renderer.removeClass(value.nativeElement, 'show');
@@ -558,7 +707,7 @@ export class ChartComponent implements OnInit {
       });
 
     } else {
-      this.displayAxis = true;
+      this.displayCrosshair = true;
       this.axisValues.forEach((value, i) => {
         let y = value.nativeElement.attributes.y.value;
         if ( y == this.y - 8) {
