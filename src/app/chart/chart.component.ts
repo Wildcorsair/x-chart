@@ -489,15 +489,6 @@ export class ChartComponent implements OnInit {
       this.offset = this.offset - d;
     }
 
-
-    console.log('Last Point:', lastPoint, 'Last Point Offset: ', lastPointOffset);
-
-    for (let i = 0; i < elCount; i++) {
-      coords.push(70 + this.offset * i);
-    }
-
-    console.log(coords);
-
     for (let i = 0; i < elCount; i++) {
       this.data[i].coord = 400 - (50 + (this.data[i].value - min) / (max - min) * (350 - 50));
       if (i !== elCount - 1) {
