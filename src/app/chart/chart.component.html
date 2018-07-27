@@ -8,7 +8,7 @@
 
         <g>
           <text *ngIf="displayMinValue" class="axis-y-value" x="45" y="350">{{ minValue }}</text>
-          <text *ngFor="let v of axisYLeft; let i = index" appAxisValue class="axis-value" x="13" attr.y="{{ 350 - i }}">{{ v }}</text>
+          <text *ngFor="let v of axisYLeft; let i = index" appAxisYValue class="axis-value" x="13" attr.y="{{ 350 - i }}">{{ v }}</text>
           <text *ngIf="displayMaxValue" class="axis-y-value" x="45" y="50">{{ maxValue }}</text>
         </g>
 
@@ -31,7 +31,7 @@
         </g>
 
         <g *ngFor="let v of axisX; let i = index">
-          <text appAxisXValue class="axis-value" attr.x="{{ 60 + offset * i }}" y="362">{{ v }}</text>
+          <text appAxisXValue class="axis-value" attr.x="{{ 50 + offset * i }}" y="362">{{ v }}</text>
         </g>
 
         <!-- Chart Rectangles -->
@@ -44,14 +44,12 @@
           <path attr.d="{{ line }}" class="chart-line" />
         </g>
 
-        <circle cx="640" cy="100" r="2" style="fill: #48d82a" />
-
         <!-- Chart Circles -->
         <!-- <g>
           <circle *ngFor="let point of data; let i = index" attr.cx="{{ 70 + (offset * i) }}" attr.cy="{{ point.coord }}" r="3" style="fill: #48d82a" />
         </g> -->
 
-        <line *ngIf="displayCrosshair" class="cross-hair" x1="50" attr.y1="{{ y - 9 }}" attr.x2="{{ size.width - 70 }}" attr.y2="{{ y - 9 }}" />
-        <line *ngIf="displayCrosshair" class="cross-hair" attr.x1="{{ x - 8 }}" y1="50" attr.x2="{{ x - 8 }}" y2="350" />
+        <line *ngIf="displayCrosshair" class="cross-hair" x1="50" attr.y1="{{ y }}" attr.x2="{{ size.width - 70 }}" attr.y2="{{ y }}" />
+        <line *ngIf="displayCrosshair" class="cross-hair" attr.x1="{{ x }}" y1="50" attr.x2="{{ x }}" y2="350" />
     </svg>
 </div>

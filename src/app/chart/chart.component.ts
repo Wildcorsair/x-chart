@@ -475,7 +475,6 @@ export class ChartComponent implements OnInit {
       min = 0;
     }
 
-    // this.offset = Math.round(460 / (elCount - 1));
     this.offset = Math.round((this.size.width - 160) / (elCount - 1));
 
     let lastPoint = this.size.width - 90;
@@ -515,14 +514,14 @@ export class ChartComponent implements OnInit {
     }
 
     this.columnWidth = 1;
+    // this.columnWidth = this.size.width / (elCount - 1) - 5;
 
     this.columnOffset =  this.columnWidth + 5;
 
     for (let i = 0; i < elCount; i++) {
-      // this.columns[i].coord = 400 - (50 + (this.columns[i].value - min) / (max - min) * (350 - 50));
       this.columns[i].coord = this.size.height - (50 + (this.columns[i].value - min) / (max - min) * (350 - 50));
     }
-    console.log(this.columns);
+
   }
 
   /**
@@ -665,7 +664,7 @@ export class ChartComponent implements OnInit {
     let minDate = new Date(minDateTimestamp);
     let maxDate = new Date(maxDateTimestamp);
 
-    this.stepX = Math.floor(460 / (elCount - 1));
+    // this.stepX = Math.floor(460 / (elCount - 1));
 
     this.startMonthName = this.getMonthName(minDate.getMonth());
     this.endMonthName = this.getMonthName(maxDate.getMonth());
@@ -688,8 +687,11 @@ export class ChartComponent implements OnInit {
    */
   move(event) {
     this.displayValue = true;
-    this.x = event.x;
-    this.y = event.y;
+    // this.x = event.x;
+    // this.y = event.y;
+
+    this.x = event.offsetX;
+    this.y = event.offsetY;
 
     // console.log('X: ', this.x);
     // console.log('Y: ', this.y);
@@ -728,7 +730,7 @@ export class ChartComponent implements OnInit {
       this.displayCrosshair = true;
       this.axisYValues.forEach((value, i) => {
         let y = value.nativeElement.attributes.y.value;
-        if ( y == this.y - 8) {
+        if ( y == this.y - 1) {
           this.renderer.addClass(value.nativeElement, 'show');
           this.hideMinValue(y);
           this.hideMaxValue(y);
@@ -740,7 +742,10 @@ export class ChartComponent implements OnInit {
       this.axisXValues.forEach((value, i) => {
         let x = value.nativeElement.attributes.x.value;
 
-        if ( x == this.x - 17 || x == this.x - 18 || x == this.x - 19 || x == this.x - 20 || x == this.x - 21) {
+        if ( Math.round(x) == this.x - 17 || Math.round(x) == this.x - 18
+            || Math.round(x) == this.x - 19 || Math.round(x) == this.x - 20
+            || Math.round(x) == this.x - 21
+          ) {
           this.renderer.addClass(value.nativeElement, 'show');
           this.hideStartMonth(x);
           this.hideEndMonth(x);
@@ -752,7 +757,7 @@ export class ChartComponent implements OnInit {
       this.axisY2Values.forEach((value, i) => {
         let y = value.nativeElement.attributes.y.value;
 
-        if ( y == this.y - 9) {
+        if ( y == this.y) {
           this.renderer.addClass(value.nativeElement, 'show');
           this.hideMinY2Value(y);
           this.hideMaxY2Value(y);
