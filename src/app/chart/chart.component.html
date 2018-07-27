@@ -1,8 +1,11 @@
 <div class="x-chart-wrapper">
-    <svg (mousemove)="move($event)" class="x-chart" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2" width="620" height="400" viewBox="0 0 620 400" aria-labelledby="title" role="img">
+    <svg (mousemove)="move($event)" class="x-chart" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.2" attr.width="{{ size.width }}" attr.height="{{ size.height }}" attr.viewBox="0 0 {{ size.width }} {{ size.height }}" aria-labelledby="title" role="img">
+
+        <!-- Axis Y -->
         <g class="axis-y">
           <line x1="50" y1="40" x2="50" y2="350" stroke="#0000ff" />
         </g>
+
         <g>
           <text *ngIf="displayMinValue" class="axis-y-value" x="45" y="350">{{ minValue }}</text>
           <text *ngFor="let v of axisYLeft; let i = index" appAxisValue class="axis-value" x="13" attr.y="{{ 350 - i }}">{{ v }}</text>
@@ -11,20 +14,20 @@
 
         <!-- Axis Y2 -->
         <g class="axis-y">
-            <line x1="550" y1="45" x2="550" y2="350" stroke="#0000ff" />
+            <line attr.x1="{{ size.width - 70 }}" y1="45" attr.x2="{{ size.width - 70 }}" y2="350" stroke="#0000ff" />
         </g>
 
         <!-- Axis Y2 Values -->
         <g>
-          <text *ngIf="displayMinY2Value" class="axis-x-value" x="560" y="350">{{ minY2Value }}</text>
-          <text *ngFor="let v of axisYRight; let i = index" appAxisY2Value class="axis-value" x="560" attr.y="{{ 350 - i }}">{{ v }}</text>
-          <text *ngIf="displayMaxY2Value" class="axis-x-value" x="560" y="50">{{ maxY2Value }}</text>
+          <text *ngIf="displayMinY2Value" class="axis-x-value" attr.x="{{ size.width - 60 }}" y="350">{{ minY2Value }}</text>
+          <text *ngFor="let v of axisYRight; let i = index" appAxisY2Value class="axis-value" attr.x="{{ size.width - 60 }}" attr.y="{{ 350 - i }}">{{ v }}</text>
+          <text *ngIf="displayMaxY2Value" class="axis-x-value" attr.x="{{ size.width - 60 }}" y="50">{{ maxY2Value }}</text>
         </g>
 
         <g class="axis-x">
           <text *ngIf="displayStartMonth" class="axis-x-value" x="40" y="362">{{ startMonthName }}</text>
-          <line x1="50" y1="350" x2="550" y2="350" stroke="#0000ff" />
-          <text *ngIf="displayEndMonth" class="axis-x-value" x="545" y="362">{{ endMonthName }}</text>
+          <line x1="50" y1="350" attr.x2="{{ size.width - 70 }}" y2="350" stroke="#0000ff" />
+          <text *ngIf="displayEndMonth" class="axis-x-value" attr.x="{{ size.width - 75 }}" y="362">{{ endMonthName }}</text>
         </g>
 
         <g *ngFor="let v of axisX; let i = index">
@@ -41,12 +44,14 @@
           <path attr.d="{{ line }}" class="chart-line" />
         </g>
 
+        <circle cx="640" cy="100" r="2" style="fill: #48d82a" />
+
         <!-- Chart Circles -->
         <!-- <g>
           <circle *ngFor="let point of data; let i = index" attr.cx="{{ 70 + (offset * i) }}" attr.cy="{{ point.coord }}" r="3" style="fill: #48d82a" />
         </g> -->
 
-        <line *ngIf="displayCrosshair" class="cross-hair" x1="50" attr.y1="{{ y - 9 }}" x2="550" attr.y2="{{ y - 9 }}" />
+        <line *ngIf="displayCrosshair" class="cross-hair" x1="50" attr.y1="{{ y - 9 }}" attr.x2="{{ size.width - 70 }}" attr.y2="{{ y - 9 }}" />
         <line *ngIf="displayCrosshair" class="cross-hair" attr.x1="{{ x - 8 }}" y1="50" attr.x2="{{ x - 8 }}" y2="350" />
     </svg>
 </div>

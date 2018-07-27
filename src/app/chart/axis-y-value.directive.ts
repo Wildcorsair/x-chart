@@ -1,9 +1,9 @@
 import { Directive } from '@angular/core';
 
 @Directive({
-  selector: '[appAxisValue]'
+  selector: '[appAxisYValue]'
 })
-export class AxisValueDirective {
+export class AxisYValueDirective {
 
   constructor() { }
 

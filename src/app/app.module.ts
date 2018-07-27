@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ChartComponent } from './chart/chart.component';
-import { AxisValueDirective } from './chart/axis-value.directive';
+import { AxisYValueDirective } from './chart/axis-y-value.directive';
 import { AxisXValueDirective } from './chart/axis-x-value.directive';
 import { AxisY2ValueDirective } from './chart/axis-y2-value.directive';
 
@@ -11,7 +11,7 @@ import { AxisY2ValueDirective } from './chart/axis-y2-value.directive';
   declarations: [
     AppComponent,
     ChartComponent,
-    AxisValueDirective,
+    AxisYValueDirective,
     AxisXValueDirective,
     AxisY2ValueDirective
   ],

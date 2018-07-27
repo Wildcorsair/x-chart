@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChildren, QueryList, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, ViewChildren, QueryList, ElementRef, Renderer2, Input } from '@angular/core';
 
-import { AxisValueDirective } from './axis-value.directive';
+import { AxisYValueDirective } from './axis-y-value.directive';
 import { AxisXValueDirective } from './axis-x-value.directive';
 import { AxisY2ValueDirective } from './axis-y2-value.directive';
 
@@ -437,7 +437,9 @@ export class ChartComponent implements OnInit {
 
   chartLineStartCoord: number;
 
-  @ViewChildren(AxisValueDirective, { read: ElementRef }) axisValues: QueryList<ElementRef>;
+  @Input() size: any;
+
+  @ViewChildren(AxisYValueDirective, { read: ElementRef }) axisYValues: QueryList<ElementRef>;
   @ViewChildren(AxisXValueDirective, { read: ElementRef }) axisXValues: QueryList<ElementRef>;
   @ViewChildren(AxisY2ValueDirective, { read: ElementRef }) axisY2Values: QueryList<ElementRef>;
 
@@ -452,8 +454,8 @@ export class ChartComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    // console.log(this.axisValues);
-    // this.axisValues.forEach(value => console.log(value.nativeElement));
+    // console.log(this.axisYValues);
+    // this.axisYValues.forEach(value => console.log(value.nativeElement));
   }
 
   /**
@@ -463,6 +465,8 @@ export class ChartComponent implements OnInit {
     let elCount = this.data.length;
     let min = this.min(this.data);
     let max = this.max(this.data);
+    let coords = [];
+    let d: number;
 
     let diff = max - min;
     min = min - diff;
@@ -471,7 +475,28 @@ export class ChartComponent implements OnInit {
       min = 0;
     }
 
-    this.offset = Math.round(460 / (elCount - 1));
+    // this.offset = Math.round(460 / (elCount - 1));
+    this.offset = Math.round((this.size.width - 160) / (elCount - 1));
+
+    let lastPoint = this.size.width - 90;
+    let lastPointOffset = (70 + this.offset * (elCount - 1));
+
+    if (lastPointOffset < lastPoint) {
+      d = (lastPoint - lastPointOffset) / (elCount - 1);
+      this.offset = this.offset + d;
+    } else {
+      d = (lastPointOffset - lastPoint) / (elCount - 1);
+      this.offset = this.offset - d;
+    }
+
+
+    console.log('Last Point:', lastPoint, 'Last Point Offset: ', lastPointOffset);
+
+    for (let i = 0; i < elCount; i++) {
+      coords.push(70 + this.offset * i);
+    }
+
+    console.log(coords);
 
     for (let i = 0; i < elCount; i++) {
       this.data[i].coord = 400 - (50 + (this.data[i].value - min) / (max - min) * (350 - 50));
@@ -503,8 +528,10 @@ export class ChartComponent implements OnInit {
     this.columnOffset =  this.columnWidth + 5;
 
     for (let i = 0; i < elCount; i++) {
-      this.columns[i].coord = 400 - (50 + (this.columns[i].value - min) / (max - min) * (350 - 50));
+      // this.columns[i].coord = 400 - (50 + (this.columns[i].value - min) / (max - min) * (350 - 50));
+      this.columns[i].coord = this.size.height - (50 + (this.columns[i].value - min) / (max - min) * (350 - 50));
     }
+    console.log(this.columns);
   }
 
   /**
@@ -676,7 +703,7 @@ export class ChartComponent implements OnInit {
     // console.log('X: ', this.x);
     // console.log('Y: ', this.y);
 
-    if ((this.x < 57 || this.x > 560) || (this.y < 57 || this.y > 360)) {
+    if ((this.x < 57 || this.x > this.size.width - 60) || (this.y < 57 || this.y > 360)) {
       // Display min value on the Y axis, when cursor goes out the chart
       this.displayMinValue = true;
       // Display max value on the Y axis, when cursor goes out the chart
@@ -694,7 +721,7 @@ export class ChartComponent implements OnInit {
 
       this.displayCrosshair = false;
 
-      this.axisValues.forEach((value) => {
+      this.axisYValues.forEach((value) => {
         this.renderer.removeClass(value.nativeElement, 'show');
       });
 
@@ -708,7 +735,7 @@ export class ChartComponent implements OnInit {
 
     } else {
       this.displayCrosshair = true;
-      this.axisValues.forEach((value, i) => {
+      this.axisYValues.forEach((value, i) => {
         let y = value.nativeElement.attributes.y.value;
         if ( y == this.y - 8) {
           this.renderer.addClass(value.nativeElement, 'show');
@@ -755,7 +782,7 @@ export class ChartComponent implements OnInit {
   }
 
   hideEndMonth(x) {
-    if (540 - x < 30) {
+    if (this.size.width - 80 - x < 30) {
       this.displayEndMonth = false;
     } else {
       this.displayEndMonth = true;
