@@ -36,7 +36,8 @@
 
         <!-- Chart Rectangles -->
         <g>
-          <rect class="column" *ngFor="let column of columns; let i = index" attr.x="{{ 70 + offset * i }}" attr.y="{{ column.coord }}" attr.width="{{ columnWidth }}" attr.height="{{ 350 - column.coord }}" />
+          <!-- <rect class="column" *ngFor="let column of columns; let i = index" attr.x="{{ 70 + offset * i }}" attr.y="{{ column.coord }}" attr.width="{{ columnWidth }}" attr.height="{{ 350 - column.coord }}" /> -->
+          <rect class="column" *ngFor="let column of columns; let i = index" attr.x="{{ 70 + columnOffset * i }}" attr.y="{{ column.coord }}" attr.width="{{ columnWidth }}" attr.height="{{ 350 - column.coord }}" />
         </g>
 
         <!-- Chart Line -->
@@ -45,9 +46,9 @@
         </g>
 
         <!-- Chart Circles -->
-        <!-- <g>
-          <circle *ngFor="let point of data; let i = index" attr.cx="{{ 70 + (offset * i) }}" attr.cy="{{ point.coord }}" r="3" style="fill: #48d82a" />
-        </g> -->
+        <g>
+          <circle *ngFor="let point of data; let i = index" attr.cx="{{ 70 + offset * i }}" attr.cy="{{ point.coord }}" r="3" style="fill: #48d82a" />
+        </g>
 
         <line *ngIf="displayCrosshair" class="cross-hair" x1="50" attr.y1="{{ y }}" attr.x2="{{ size.width - 70 }}" attr.y2="{{ y }}" />
         <line *ngIf="displayCrosshair" class="cross-hair" attr.x1="{{ x }}" y1="50" attr.x2="{{ x }}" y2="350" />
