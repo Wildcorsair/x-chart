@@ -27,384 +27,8 @@ export class ChartComponent implements OnInit {
     'Dec'
   ];
 
-  data: any[] = [
-    // {
-    //   date: '2018-06-19',
-    //   value: 5750
-    // },
-    // {
-    //   date: '2018-06-20',
-    //   value: 5570
-    // },
-    // {
-    //   date: '2018-06-21',
-    //   value: 5460
-    // },
-    // {
-    //   date: '2018-06-22',
-    //   value: 5500
-    // },
-    // {
-    //   date: '2018-06-23',
-    //   value: 5670
-    // },
-    // {
-    //   date: '2018-06-24',
-    //   value: 5830
-    // },
-    // {
-    //   date: '2018-06-25',
-    //   value: 6010
-    // },
-    // {
-    //   date: '2018-06-26',
-    //   value: 6240
-    // },
-    // {
-    //   date: '2018-06-27',
-    //   value: 6380
-    // },
-    // {
-    //   date: '2018-06-28',
-    //   value: 6270
-    // },
-    // {
-    //   date: '2018-06-29',
-    //   value: 6110
-    // },
-    // {
-    //   date: '2018-06-30',
-    //   value: 6035
-    // },
-    // {
-    //   date: '2018-07-01',
-    //   value: 5810
-    // },
-    // {
-    //   date: '2018-07-02',
-    //   value: 5950
-    // },
-    // {
-    //   date: '2018-07-03',
-    //   value: 6150
-    // },
-    // {
-    //   date: '2018-07-04',
-    //   value: 6275
-    // },
-    // {
-    //   date: '2018-07-05',
-    //   value: 6120
-    // },
-    // {
-    //   date: '2018-07-06',
-    //   value: 5920
-    // },
-    // {
-    //   date: '2018-07-07',
-    //   value: 5850
-    // },
-    // {
-    //   date: '2018-07-08',
-    //   value: 5790
-    // },
-    // {
-    //   date: '2018-07-09',
-    //   value: 5550
-    // },
-    // {
-    //   date: '2018-07-10',
-    //   value: 5823
-    // },
-    // {
-    //   date: '2018-07-11',
-    //   value: 5985
-    // },
-    // {
-    //   date: '2018-07-12',
-    //   value: 7350
-    // },
-    // {
-    //   date: '2018-07-13',
-    //   value: 6450
-    // },
-    // {
-    //   date: '2018-07-14',
-    //   value: 5540
-    // },
-    // {
-    //   date: '2018-07-15',
-    //   value: 5680
-    // },
-    // {
-    //   date: '2018-07-16',
-    //   value: 4870
-    // },
-    // {
-    //   date: '2018-07-17',
-    //   value: 4600
-    // },
-    // {
-    //   date: '2018-07-18',
-    //   value: 4300
-    // }
-    // {
-    //   date: '2018-07-19',
-    //   value: 4400
-    // }
-
-    {
-      date: '2018-06-22',
-      value: 0.0240
-    },
-    {
-      date: '2018-06-23',
-      value: 0.0220
-    },
-    {
-      date: '2018-06-24',
-      value: 0.0200
-    },
-    {
-      date: '2018-06-25',
-      value: 0.0220
-    },
-    {
-      date: '2018-06-26',
-      value: 0.0250
-    },
-    {
-      date: '2018-06-27',
-      value: 0.0270
-    },
-    {
-      date: '2018-06-28',
-      value: 0.0280
-    },
-    {
-      date: '2018-06-29',
-      value: 0.0290
-    },
-    {
-      date: '2018-06-30',
-      value: 0.0320
-    },
-    {
-      date: '2018-07-01',
-      value: 0.0300
-    },
-    {
-      date: '2018-07-02',
-      value: 0.0290
-    },
-    {
-      date: '2018-07-03',
-      value: 0.0260
-    },
-    {
-      date: '2018-07-04',
-      value: 0.0230
-    },
-    {
-      date: '2018-07-05',
-      value: 0.0250
-    },
-    {
-      date: '2018-07-06',
-      value: 0.0290
-    },
-    {
-      date: '2018-07-07',
-      value: 0.0320
-    },
-    {
-      date: '2018-07-08',
-      value: 0.0330
-    },
-    {
-      date: '2018-07-09',
-      value: 0.0360
-    },
-    {
-      date: '2018-07-10',
-      value: 0.0380
-    },
-    {
-      date: '2018-07-11',
-      value: 0.041
-    },
-    {
-      date: '2018-07-12',
-      value: 0.043
-    },
-    {
-      date: '2018-07-13',
-      value: 0.0290
-    },
-    {
-      date: '2018-07-14',
-      value: 0.0320
-    },
-    {
-      date: '2018-07-15',
-      value: 0.0330
-    },
-    {
-      date: '2018-07-16', // 7 -days
-      value: 0.0360
-    },
-    {
-      date: '2018-07-17',
-      value: 0.0380
-    },
-    {
-      date: '2018-07-18',
-      value: 0.041
-    },
-    {
-      date: '2018-07-19',
-      value: 0.043
-    },
-    {
-      date: '2018-07-20',
-      value: 0.045
-    },
-    {
-      date: '2018-07-21',
-      value: 0.050
-    },
-    {
-      date: '2018-07-22',
-      value: 0.044
-    }
-  ];
-
-  columns: any[] = [
-    {
-      date: '2018-06-22',
-      value: 11970000
-    },
-    {
-      date: '2018-06-23',
-      value: 12160000
-    },
-    {
-      date: '2018-06-24',
-      value: 12450000
-    },
-    {
-      date: '2018-06-25',
-      value: 12850000
-    },
-    {
-      date: '2018-06-26',
-      value: 12970000
-    },
-    {
-      date: '2018-06-27',
-      value: 13080000
-    },
-    {
-      date: '2018-06-28',
-      value: 13145000
-    },
-    {
-      date: '2018-06-29',
-      value: 13233000
-    },
-    {
-      date: '2018-06-30',
-      value: 13140000
-    },
-    {
-      date: '2018-07-01',
-      value: 13045000
-    },
-    {
-      date: '2018-07-02',
-      value: 13045000
-    },
-    {
-      date: '2018-07-03',
-      value: 12960000
-    },
-    {
-      date: '2018-07-04',
-      value: 12845300
-    },
-    {
-      date: '2018-07-05',
-      value: 12759000
-    },
-    {
-      date: '2018-07-06',
-      value: 12645000
-    },
-    {
-      date: '2018-07-07',
-      value: 12554000
-    },
-    {
-      date: '2018-07-08',
-      value: 12568000
-    },
-    {
-      date: '2018-07-09',
-      value: 12487000
-    },
-    {
-      date: '2018-07-10',
-      value: 12960000
-    },
-    {
-      date: '2018-07-11',
-      value: 12430000
-    },
-    {
-      date: '2018-07-12',
-      value: 12735000
-    },
-    {
-      date: '2018-07-13',
-      value: 12645000
-    },
-    {
-      date: '2018-07-14',
-      value: 12554000
-    },
-    {
-      date: '2018-07-15',
-      value: 12568000
-    },
-    {
-      date: '2018-07-16', // 7 -days
-      value: 12487000
-    },
-    {
-      date: '2018-07-17',
-      value: 12960000
-    },
-    {
-      date: '2018-07-18',
-      value: 12430000
-    },
-    {
-      date: '2018-07-19',
-      value: 12735000
-    },
-    {
-      date: '2018-07-20',
-      value: 12450000
-    },
-    {
-      date: '2018-07-21',
-      value: 12265000
-    },
-    {
-      date: '2018-07-22',
-      value: 12168000
-    }
-  ];
+  data: any[] = [];
+  columns: any[] = [];
 
   offset: number;
   axisYLeft: number[] = [];
@@ -422,18 +46,6 @@ export class ChartComponent implements OnInit {
   startMonthName: string;
   endMonthName: string;
 
-  minValue: number;
-  maxValue: number;
-
-  minY2Value: number;
-  maxY2Value: number;
-
-  displayMinValue: boolean = true;
-  displayMaxValue: boolean = true;
-
-  displayMinY2Value: boolean = true;
-  displayMaxY2Value: boolean = true;
-
   displayStartMonth: boolean = true;
   displayEndMonth: boolean = true;
 
@@ -444,6 +56,7 @@ export class ChartComponent implements OnInit {
   axisY2IntermediateValues: any[];
 
   @Input() size: any;
+  @Input() dataset: any;
 
   @ViewChildren(AxisYValueDirective, { read: ElementRef }) axisYValues: QueryList<ElementRef>;
   @ViewChildren(AxisXValueDirective, { read: ElementRef }) axisXValues: QueryList<ElementRef>;
@@ -453,6 +66,13 @@ export class ChartComponent implements OnInit {
   constructor(private renderer: Renderer2) { }
 
   ngOnInit() {
+
+    for (let i = 0; i < this.dataset.length; i++) {
+      let gripDate = this.dataset[i].grip_date.split(' ')[0];
+      this.data.push({date: gripDate, value: this.dataset[i].price});
+      this.columns.push({date: gripDate, value: this.dataset[i].volume});
+    }
+
     this.calculateColumnWidth();
     this.calculatePoints();
     this.renderLine();
@@ -514,23 +134,6 @@ export class ChartComponent implements OnInit {
     if (min < 0) {
       min = 0;
     }
-
-    // this.infelicity = Math.floor(this.columnWidth / 2);
-    // console.log(this.infelicity);
-    //
-    // this.offset = Math.round((this.size.width - 160) / (elCount - 1));
-    // console.log('Offset: ', this.offset);
-    //
-    // let lastPoint = this.size.width - 90;
-    // let lastPointOffset = (70 + this.offset * (elCount - 1));
-    //
-    // if (lastPointOffset < lastPoint) {
-    //   d = (lastPoint - lastPointOffset) / (elCount - 1);
-    //   this.offset = this.offset + d;
-    // } else {
-    //   d = (lastPointOffset - lastPoint) / (elCount - 1);
-    //   this.offset = this.offset - d;
-    // }
 
     for (let i = 0; i < elCount; i++) {
       this.data[i].coord = 400 - (50 + (this.data[i].value - min) / (max - min) * (350 - 50));
@@ -630,7 +233,6 @@ export class ChartComponent implements OnInit {
       axisYIntermediateValues.push({coord: valueCoord, value: step.toFixed(4)});
     }
 
-    console.log(axisYIntermediateValues);
     return axisYIntermediateValues;
   }
 
@@ -647,10 +249,8 @@ export class ChartComponent implements OnInit {
 
     if (min < 0) {
       min = 0;
-      this.minValue = min;
       this.axisYLeft.push(min);
     } else {
-      this.minValue = min.toFixed(4);
       this.axisYLeft.push(min.toFixed(4));
     }
 
@@ -661,7 +261,6 @@ export class ChartComponent implements OnInit {
       min = min + step;
       this.axisYLeft.push(min.toFixed(4));
     }
-    this.maxValue = min.toFixed(4);
   }
 
   /**
@@ -721,7 +320,6 @@ export class ChartComponent implements OnInit {
       axisY2IntermediateValues.push({coord: valueCoord, value: step});
     }
 
-    console.log(axisY2IntermediateValues);
     return axisY2IntermediateValues;
   }
 
@@ -793,30 +391,19 @@ export class ChartComponent implements OnInit {
    */
   move(event) {
     this.displayValue = true;
-    // this.x = event.x;
-    // this.y = event.y;
 
     this.x = event.offsetX;
     this.y = event.offsetY;
 
     // console.log('X: ', this.x);
-    console.log('Y: ', this.y);
+    // console.log('Y: ', this.y);
 
     if ((this.x < 50 || this.x > this.size.width - 70) || (this.y < 50 || this.y > 350)) {
-      // Display min value on the Y axis, when cursor goes out the chart
-      this.displayMinValue = true;
-      // Display max value on the Y axis, when cursor goes out the chart
-      this.displayMaxValue = true;
 
       // Display start month name on the X axis, when cursor goes out the chart
       this.displayStartMonth = true;
       // Display end month name on the X axis, when cursor goes out the chart
       this.displayEndMonth = true;
-
-      // Display min value on the Y axis, when cursor goes out the chart
-      this.displayMinY2Value = true;
-      // Display max value on the Y2 axis, when cursor goes out the chart
-      this.displayMaxY2Value = true;
 
       this.displayCrosshair = false;
 
@@ -842,8 +429,6 @@ export class ChartComponent implements OnInit {
         let y = value.nativeElement.attributes.y.value;
         if ( y == this.y - 1) {
           this.renderer.addClass(value.nativeElement, 'show');
-          this.hideMinValue(y);
-          this.hideMaxValue(y);
         } else {
           this.renderer.removeClass(value.nativeElement, 'show');
         }
@@ -880,8 +465,6 @@ export class ChartComponent implements OnInit {
 
         if ( y == this.y) {
           this.renderer.addClass(value.nativeElement, 'show');
-          this.hideMinY2Value(y);
-          this.hideMaxY2Value(y);
         } else {
           this.renderer.removeClass(value.nativeElement, 'show');
         }
@@ -903,38 +486,6 @@ export class ChartComponent implements OnInit {
       this.displayEndMonth = false;
     } else {
       this.displayEndMonth = true;
-    }
-  }
-
-  hideMinValue(y) {
-    if (350 - y < 15) {
-      this.displayMinValue = false;
-    } else {
-      this.displayMinValue = true;
-    }
-  }
-
-  hideMaxValue(y) {
-    if (y - 50 < 15) {
-      this.displayMaxValue = false;
-    } else {
-      this.displayMaxValue = true;
-    }
-  }
-
-  hideMinY2Value(y) {
-    if (350 - y < 15) {
-      this.displayMinY2Value = false;
-    } else {
-      this.displayMinY2Value = true;
-    }
-  }
-
-  hideMaxY2Value(y) {
-    if (y - 50 < 15) {
-      this.displayMaxY2Value = false;
-    } else {
-      this.displayMaxY2Value = true;
     }
   }
 }

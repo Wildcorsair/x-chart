@@ -12,9 +12,7 @@
         </g>
 
         <g>
-          <!-- <text *ngIf="displayMinValue" class="axis-y-value" x="45" y="350">{{ minValue }}</text> -->
           <text *ngFor="let v of axisYLeft; let i = index" appAxisYValue class="axis-value" x="12" attr.y="{{ 350 - i }}">{{ v }}</text>
-          <!-- <text *ngIf="displayMaxValue" class="axis-y-value" x="45" y="50">{{ maxValue }}</text> -->
         </g>
 
         <!-- Axis Y2 Line -->
@@ -29,9 +27,7 @@
 
         <!-- Axis Y2 Values -->
         <g>
-          <!-- <text *ngIf="displayMinY2Value" class="axis-x-value" attr.x="{{ size.width - 60 }}" y="350">{{ minY2Value }}</text> -->
           <text *ngFor="let v of axisYRight; let i = index" appAxisY2Value class="axis-value" attr.x="{{ size.width - 60 }}" attr.y="{{ 350 - i }}">{{ v }}</text>
-          <!-- <text *ngIf="displayMaxY2Value" class="axis-x-value" attr.x="{{ size.width - 60 }}" y="50">{{ maxY2Value }}</text> -->
         </g>
 
         <g class="axis-x">
