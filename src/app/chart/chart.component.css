@@ -39,6 +39,13 @@
   text-anchor: end;
 }
 
+.axis-y-intermediate-value {
+  display: none;
+  cursor: default;
+  font-size: 12px;
+  text-anchor: end;
+}
+
 .show {
   display: block;
 }

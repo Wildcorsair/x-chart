@@ -6,6 +6,7 @@ import { ChartComponent } from './chart/chart.component';
 import { AxisYValueDirective } from './chart/axis-y-value.directive';
 import { AxisXValueDirective } from './chart/axis-x-value.directive';
 import { AxisY2ValueDirective } from './chart/axis-y2-value.directive';
+import { AxisYIntermediateValueDirective } from './chart/axis-y-intermediate-value.directive';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { AxisY2ValueDirective } from './chart/axis-y2-value.directive';
     ChartComponent,
     AxisYValueDirective,
     AxisXValueDirective,
-    AxisY2ValueDirective
+    AxisY2ValueDirective,
+    AxisYIntermediateValueDirective
   ],
   imports: [
     BrowserModule

@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChildren, QueryList, ElementRef, Renderer2, Inpu
 import { AxisYValueDirective } from './axis-y-value.directive';
 import { AxisXValueDirective } from './axis-x-value.directive';
 import { AxisY2ValueDirective } from './axis-y2-value.directive';
+import { AxisYIntermediateValueDirective } from './axis-y-intermediate-value.directive';
 
 @Component({
   selector: 'app-chart',
@@ -152,102 +153,102 @@ export class ChartComponent implements OnInit {
     //   value: 4400
     // }
 
-    // {
-    //   date: '2018-06-22',
-    //   value: 0.0240
-    // },
-    // {
-    //   date: '2018-06-23',
-    //   value: 0.0220
-    // },
-    // {
-    //   date: '2018-06-24',
-    //   value: 0.0200
-    // },
-    // {
-    //   date: '2018-06-25',
-    //   value: 0.0220
-    // },
-    // {
-    //   date: '2018-06-26',
-    //   value: 0.0250
-    // },
-    // {
-    //   date: '2018-06-27',
-    //   value: 0.0270
-    // },
-    // {
-    //   date: '2018-06-28',
-    //   value: 0.0280
-    // },
-    // {
-    //   date: '2018-06-29',
-    //   value: 0.0290
-    // },
-    // {
-    //   date: '2018-06-30',
-    //   value: 0.0320
-    // },
-    // {
-    //   date: '2018-07-01',
-    //   value: 0.0300
-    // },
-    // {
-    //   date: '2018-07-02',
-    //   value: 0.0290
-    // },
-    // {
-    //   date: '2018-07-03',
-    //   value: 0.0260
-    // },
-    // {
-    //   date: '2018-07-04',
-    //   value: 0.0230
-    // },
-    // {
-    //   date: '2018-07-05',
-    //   value: 0.0250
-    // },
-    // {
-    //   date: '2018-07-06',
-    //   value: 0.0290
-    // },
-    // {
-    //   date: '2018-07-07',
-    //   value: 0.0320
-    // },
-    // {
-    //   date: '2018-07-08',
-    //   value: 0.0330
-    // },
-    // {
-    //   date: '2018-07-09',
-    //   value: 0.0360
-    // },
-    // {
-    //   date: '2018-07-10',
-    //   value: 0.0380
-    // },
-    // {
-    //   date: '2018-07-11',
-    //   value: 0.041
-    // },
-    // {
-    //   date: '2018-07-12',
-    //   value: 0.043
-    // },
-    // {
-    //   date: '2018-07-13',
-    //   value: 0.0290
-    // },
-    // {
-    //   date: '2018-07-14',
-    //   value: 0.0320
-    // },
-    // {
-    //   date: '2018-07-15',
-    //   value: 0.0330
-    // },
+    {
+      date: '2018-06-22',
+      value: 0.0240
+    },
+    {
+      date: '2018-06-23',
+      value: 0.0220
+    },
+    {
+      date: '2018-06-24',
+      value: 0.0200
+    },
+    {
+      date: '2018-06-25',
+      value: 0.0220
+    },
+    {
+      date: '2018-06-26',
+      value: 0.0250
+    },
+    {
+      date: '2018-06-27',
+      value: 0.0270
+    },
+    {
+      date: '2018-06-28',
+      value: 0.0280
+    },
+    {
+      date: '2018-06-29',
+      value: 0.0290
+    },
+    {
+      date: '2018-06-30',
+      value: 0.0320
+    },
+    {
+      date: '2018-07-01',
+      value: 0.0300
+    },
+    {
+      date: '2018-07-02',
+      value: 0.0290
+    },
+    {
+      date: '2018-07-03',
+      value: 0.0260
+    },
+    {
+      date: '2018-07-04',
+      value: 0.0230
+    },
+    {
+      date: '2018-07-05',
+      value: 0.0250
+    },
+    {
+      date: '2018-07-06',
+      value: 0.0290
+    },
+    {
+      date: '2018-07-07',
+      value: 0.0320
+    },
+    {
+      date: '2018-07-08',
+      value: 0.0330
+    },
+    {
+      date: '2018-07-09',
+      value: 0.0360
+    },
+    {
+      date: '2018-07-10',
+      value: 0.0380
+    },
+    {
+      date: '2018-07-11',
+      value: 0.041
+    },
+    {
+      date: '2018-07-12',
+      value: 0.043
+    },
+    {
+      date: '2018-07-13',
+      value: 0.0290
+    },
+    {
+      date: '2018-07-14',
+      value: 0.0320
+    },
+    {
+      date: '2018-07-15',
+      value: 0.0330
+    },
     {
       date: '2018-07-16', // 7 -days
       value: 0.0360
@@ -279,102 +280,102 @@ export class ChartComponent implements OnInit {
   ];
 
   columns: any[] = [
-    // {
-    //   date: '2018-06-22',
-    //   value: 11970000
-    // },
-    // {
-    //   date: '2018-06-23',
-    //   value: 12160000
-    // },
-    // {
-    //   date: '2018-06-24',
-    //   value: 12450000
-    // },
-    // {
-    //   date: '2018-06-25',
-    //   value: 12850000
-    // },
-    // {
-    //   date: '2018-06-26',
-    //   value: 12970000
-    // },
-    // {
-    //   date: '2018-06-27',
-    //   value: 13080000
-    // },
-    // {
-    //   date: '2018-06-28',
-    //   value: 13145000
-    // },
-    // {
-    //   date: '2018-06-29',
-    //   value: 13233000
-    // },
-    // {
-    //   date: '2018-06-30',
-    //   value: 13140000
-    // },
-    // {
-    //   date: '2018-07-01',
-    //   value: 13045000
-    // },
-    // {
-    //   date: '2018-07-02',
-    //   value: 13045000
-    // },
-    // {
-    //   date: '2018-07-03',
-    //   value: 12960000
-    // },
-    // {
-    //   date: '2018-07-04',
-    //   value: 12845300
-    // },
-    // {
-    //   date: '2018-07-05',
-    //   value: 12759000
-    // },
-    // {
-    //   date: '2018-07-06',
-    //   value: 12645000
-    // },
-    // {
-    //   date: '2018-07-07',
-    //   value: 12554000
-    // },
-    // {
-    //   date: '2018-07-08',
-    //   value: 12568000
-    // },
-    // {
-    //   date: '2018-07-09',
-    //   value: 12487000
-    // },
-    // {
-    //   date: '2018-07-10',
-    //   value: 12960000
-    // },
-    // {
-    //   date: '2018-07-11',
-    //   value: 12430000
-    // },
-    // {
-    //   date: '2018-07-12',
-    //   value: 12735000
-    // },
-    // {
-    //   date: '2018-07-13',
-    //   value: 12645000
-    // },
-    // {
-    //   date: '2018-07-14',
-    //   value: 12554000
-    // },
-    // {
-    //   date: '2018-07-15',
-    //   value: 12568000
-    // },
+    {
+      date: '2018-06-22',
+      value: 11970000
+    },
+    {
+      date: '2018-06-23',
+      value: 12160000
+    },
+    {
+      date: '2018-06-24',
+      value: 12450000
+    },
+    {
+      date: '2018-06-25',
+      value: 12850000
+    },
+    {
+      date: '2018-06-26',
+      value: 12970000
+    },
+    {
+      date: '2018-06-27',
+      value: 13080000
+    },
+    {
+      date: '2018-06-28',
+      value: 13145000
+    },
+    {
+      date: '2018-06-29',
+      value: 13233000
+    },
+    {
+      date: '2018-06-30',
+      value: 13140000
+    },
+    {
+      date: '2018-07-01',
+      value: 13045000
+    },
+    {
+      date: '2018-07-02',
+      value: 13045000
+    },
+    {
+      date: '2018-07-03',
+      value: 12960000
+    },
+    {
+      date: '2018-07-04',
+      value: 12845300
+    },
+    {
+      date: '2018-07-05',
+      value: 12759000
+    },
+    {
+      date: '2018-07-06',
+      value: 12645000
+    },
+    {
+      date: '2018-07-07',
+      value: 12554000
+    },
+    {
+      date: '2018-07-08',
+      value: 12568000
+    },
+    {
+      date: '2018-07-09',
+      value: 12487000
+    },
+    {
+      date: '2018-07-10',
+      value: 12960000
+    },
+    {
+      date: '2018-07-11',
+      value: 12430000
+    },
+    {
+      date: '2018-07-12',
+      value: 12735000
+    },
+    {
+      date: '2018-07-13',
+      value: 12645000
+    },
+    {
+      date: '2018-07-14',
+      value: 12554000
+    },
+    {
+      date: '2018-07-15',
+      value: 12568000
+    },
     {
       date: '2018-07-16', // 7 -days
       value: 12487000
@@ -439,12 +440,15 @@ export class ChartComponent implements OnInit {
   chartLineStartCoord: number;
   infelicity: number;
   points: number[] = [];
+  axisYIntermediateValues: any[];
+  axisY2IntermediateValues: any[];
 
   @Input() size: any;
 
   @ViewChildren(AxisYValueDirective, { read: ElementRef }) axisYValues: QueryList<ElementRef>;
   @ViewChildren(AxisXValueDirective, { read: ElementRef }) axisXValues: QueryList<ElementRef>;
   @ViewChildren(AxisY2ValueDirective, { read: ElementRef }) axisY2Values: QueryList<ElementRef>;
+  @ViewChildren(AxisYIntermediateValueDirective, { read: ElementRef }) axisYIntermediateValue: QueryList<ElementRef>;
 
   constructor(private renderer: Renderer2) { }
 
@@ -454,6 +458,8 @@ export class ChartComponent implements OnInit {
     this.renderLine();
     this.renderColumns();
     this.calcAxisYValues();
+    this.axisYIntermediateValues = this.calcAxisYIntermediateValues();
+    this.axisY2IntermediateValues = this.calcAxisY2IntermediateValues();
     this.calcAxisXValues();
     this.calcAxisY2Values();
   }
@@ -489,7 +495,7 @@ export class ChartComponent implements OnInit {
       d = (commonWidth - chartViewportWidth) / elCount;
       this.columnWidth = this.columnWidth - d;
     }
-    console.log('Column Width: ', this.columnWidth);
+    // console.log('Column Width: ', this.columnWidth);
   }
 
   /**
@@ -596,6 +602,38 @@ export class ChartComponent implements OnInit {
     return min;
   }
 
+  calcAxisYIntermediateValues() {
+    let elCount = this.data.length;
+    let max = this.max(this.data);
+    let min = this.min(this.data);
+    let diff = max - min;
+    let axisYIntermediateValues: any[] = [];
+
+    min = min - diff;
+
+    if (min < 0) {
+      min = 0;
+      axisYIntermediateValues.push({coord: this.size.height - 50, value: min});
+    } else {
+      axisYIntermediateValues.push({coord: this.size.height - 50, value: min.toFixed(4)});
+    }
+
+    let offset = (max - min) / 4;
+    // 100 is sum of top padding - 50px + bottom padding - 50px;
+    let coordOffset = (this.size.height - 100) / 4;
+    let coordStart = this.size.height - 50;
+    let valueCoord = coordStart;
+    let step = min;
+    while (step < max) {
+      step = step + offset;
+      valueCoord = valueCoord - coordOffset;
+      axisYIntermediateValues.push({coord: valueCoord, value: step.toFixed(4)});
+    }
+
+    console.log(axisYIntermediateValues);
+    return axisYIntermediateValues;
+  }
+
   /**
    * Calculates the Y axis values.
    */
@@ -653,6 +691,38 @@ export class ChartComponent implements OnInit {
       min = min + step;
       this.axisYRight.push(Math.trunc(min));
     }
+  }
+
+  calcAxisY2IntermediateValues() {
+    let elCount = this.columns.length;
+    let max = this.max(this.columns);
+    let min = this.min(this.columns);
+    let diff = max - min;
+    let axisY2IntermediateValues: any[] = [];
+
+    min = min - diff;
+
+    if (min < 0) {
+      min = 0;
+      axisY2IntermediateValues.push({coord: this.size.height - 50, value: min});
+    } else {
+      axisY2IntermediateValues.push({coord: this.size.height - 50, value: min});
+    }
+
+    let offset = (max - min) / 4;
+    // 100 is sum of top padding - 50px + bottom padding - 50px;
+    let coordOffset = (this.size.height - 100) / 4;
+    let coordStart = this.size.height - 50;
+    let valueCoord = coordStart;
+    let step = min;
+    while (step < max) {
+      step = step + offset;
+      valueCoord = valueCoord - coordOffset;
+      axisY2IntermediateValues.push({coord: valueCoord, value: step});
+    }
+
+    console.log(axisY2IntermediateValues);
+    return axisY2IntermediateValues;
   }
 
   /**
@@ -732,7 +802,7 @@ export class ChartComponent implements OnInit {
     // console.log('X: ', this.x);
     // console.log('Y: ', this.y);
 
-    if ((this.x < 57 || this.x > this.size.width - 60) || (this.y < 57 || this.y > 360)) {
+    if ((this.x < 50 || this.x > this.size.width - 70) || (this.y < 50 || this.y > 350)) {
       // Display min value on the Y axis, when cursor goes out the chart
       this.displayMinValue = true;
       // Display max value on the Y axis, when cursor goes out the chart
@@ -772,6 +842,19 @@ export class ChartComponent implements OnInit {
           this.hideMaxValue(y);
         } else {
           this.renderer.removeClass(value.nativeElement, 'show');
+        }
+      });
+
+      this.axisYIntermediateValue.forEach((value, i) => {
+        let y = value.nativeElement.attributes.y.value;
+        if (y - 10 <= this.y - 1 && y > this.y) {
+          this.renderer.removeClass(value.nativeElement, 'show');
+          this.hideMinValue(y);
+          this.hideMaxValue(y);
+        } else if (y + 10 >= this.y && y < this.y && this.y - y <= 10) {
+          this.renderer.removeClass(value.nativeElement, 'show');
+        } else {
+          this.renderer.addClass(value.nativeElement, 'show');
         }
       });
 
