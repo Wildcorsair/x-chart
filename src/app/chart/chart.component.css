@@ -40,10 +40,19 @@
 }
 
 .axis-y-intermediate-value {
+  fill: #ff0181;
   display: none;
   cursor: default;
   font-size: 12px;
   text-anchor: end;
+}
+
+.axis-y2-intermediate-value {
+  fill: #ff0181;
+  display: none;
+  cursor: default;
+  font-size: 12px;
+  text-anchor: start;
 }
 
 .show {

@@ -24,7 +24,7 @@
 
         <!-- Axis Y2 intermidiate values -->
         <g>
-          <text *ngFor="let item of axisY2IntermediateValues" class="axis-x-value" attr.x="{{ size.width - 60 }}" attr.y="{{ item.coord }}">{{ item.value }}</text>
+          <text *ngFor="let item of axisY2IntermediateValues" appAxisYIntermediateValue class="axis-y2-intermediate-value show" attr.x="{{ size.width - 60 }}" attr.y="{{ item.coord }}">{{ item.value }}</text>
         </g>
 
         <!-- Axis Y2 Values -->

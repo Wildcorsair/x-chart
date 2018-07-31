@@ -800,7 +800,7 @@ export class ChartComponent implements OnInit {
     this.y = event.offsetY;
 
     // console.log('X: ', this.x);
-    // console.log('Y: ', this.y);
+    console.log('Y: ', this.y);
 
     if ((this.x < 50 || this.x > this.size.width - 70) || (this.y < 50 || this.y > 350)) {
       // Display min value on the Y axis, when cursor goes out the chart
@@ -822,6 +822,10 @@ export class ChartComponent implements OnInit {
 
       this.axisYValues.forEach((value) => {
         this.renderer.removeClass(value.nativeElement, 'show');
+      });
+
+      this.axisYIntermediateValue.forEach((value) => {
+        this.renderer.addClass(value.nativeElement, 'show');
       });
 
       this.axisXValues.forEach((value) => {
@@ -847,11 +851,9 @@ export class ChartComponent implements OnInit {
 
       this.axisYIntermediateValue.forEach((value, i) => {
         let y = value.nativeElement.attributes.y.value;
-        if (y - 10 <= this.y - 1 && y > this.y) {
+        if (y - 10 <= this.y - 1 && y >= this.y) {
           this.renderer.removeClass(value.nativeElement, 'show');
-          this.hideMinValue(y);
-          this.hideMaxValue(y);
-        } else if (y + 10 >= this.y && y < this.y && this.y - y <= 10) {
+        } else if (y + 10 >= this.y - 1 && y <= this.y - 1 && (this.y - 1) - y <= 10) {
           this.renderer.removeClass(value.nativeElement, 'show');
         } else {
           this.renderer.addClass(value.nativeElement, 'show');
