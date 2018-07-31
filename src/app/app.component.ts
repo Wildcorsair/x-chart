@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
     title = 'app';
     size = {
-        width: 900,
+        width: 800,
         height: 400
     };
 }

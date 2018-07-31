@@ -249,7 +249,7 @@ export class ChartComponent implements OnInit {
     //   value: 0.0330
     // },
     {
-      date: '2018-07-16',
+      date: '2018-07-16', // 7 -days
       value: 0.0360
     },
     {
@@ -376,7 +376,7 @@ export class ChartComponent implements OnInit {
     //   value: 12568000
     // },
     {
-      date: '2018-07-16',
+      date: '2018-07-16', // 7 -days
       value: 12487000
     },
     {
@@ -438,6 +438,7 @@ export class ChartComponent implements OnInit {
 
   chartLineStartCoord: number;
   infelicity: number;
+  points: number[] = [];
 
   @Input() size: any;
 
@@ -449,6 +450,7 @@ export class ChartComponent implements OnInit {
 
   ngOnInit() {
     this.calculateColumnWidth();
+    this.calculatePoints();
     this.renderLine();
     this.renderColumns();
     this.calcAxisYValues();
@@ -459,6 +461,16 @@ export class ChartComponent implements OnInit {
   ngAfterViewInit() {
     // console.log(this.axisYValues);
     // this.axisYValues.forEach(value => console.log(value.nativeElement));
+  }
+
+  calculatePoints() {
+    let elCount = this.data.length;
+
+    for (let i = 0; i < elCount; i++) {
+      // 70 - is start coordinate, 10 - is width of space between columns
+      this.points.push(70 + (this.columnWidth / 2) + (this.columnWidth + 10) * i);
+    }
+
   }
 
   calculateColumnWidth() {
@@ -477,6 +489,7 @@ export class ChartComponent implements OnInit {
       d = (commonWidth - chartViewportWidth) / elCount;
       this.columnWidth = this.columnWidth - d;
     }
+    console.log('Column Width: ', this.columnWidth);
   }
 
   /**
@@ -496,29 +509,30 @@ export class ChartComponent implements OnInit {
       min = 0;
     }
 
-    this.infelicity = Math.floor(this.columnWidth / 2);
+    // this.infelicity = Math.floor(this.columnWidth / 2);
     // console.log(this.infelicity);
-
-    this.offset = Math.round((this.size.width - 160) / (elCount - 1));
-
-    let lastPoint = this.size.width - 90;
-    let lastPointOffset = (70 + this.offset * (elCount - 1));
-
-    if (lastPointOffset < lastPoint) {
-      d = (lastPoint - lastPointOffset) / (elCount - 1);
-      this.offset = this.offset + d;
-    } else {
-      d = (lastPointOffset - lastPoint) / (elCount - 1);
-      this.offset = this.offset - d;
-    }
-
+    //
+    // this.offset = Math.round((this.size.width - 160) / (elCount - 1));
+    // console.log('Offset: ', this.offset);
+    //
+    // let lastPoint = this.size.width - 90;
+    // let lastPointOffset = (70 + this.offset * (elCount - 1));
+    //
+    // if (lastPointOffset < lastPoint) {
+    //   d = (lastPoint - lastPointOffset) / (elCount - 1);
+    //   this.offset = this.offset + d;
+    // } else {
+    //   d = (lastPointOffset - lastPoint) / (elCount - 1);
+    //   this.offset = this.offset - d;
+    // }
 
     for (let i = 0; i < elCount; i++) {
       this.data[i].coord = 400 - (50 + (this.data[i].value - min) / (max - min) * (350 - 50));
+
       if (i !== elCount - 1) {
-        this.line += (70 + this.offset * i) + ',' +  this.data[i].coord + ' L';
+        this.line += this.points[i] + ',' +  this.data[i].coord + ' L';
       } else {
-        this.line += (70 + this.offset * i) + ',' +  this.data[i].coord;
+        this.line += this.points[i] + ',' +  this.data[i].coord;
       }
     }
   }
