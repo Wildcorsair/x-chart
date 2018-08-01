@@ -214,7 +214,7 @@ export class ChartComponent implements OnInit {
 
     min = min - diff;
 
-    if (min < 0) {
+    if (min <= 0) {
       min = 0;
       axisYIntermediateValues.push({coord: this.size.height - 50, value: min});
     } else {
@@ -233,6 +233,7 @@ export class ChartComponent implements OnInit {
       axisYIntermediateValues.push({coord: valueCoord, value: step.toFixed(4)});
     }
 
+    console.log(axisYIntermediateValues);
     return axisYIntermediateValues;
   }
 
@@ -247,7 +248,7 @@ export class ChartComponent implements OnInit {
 
     min = min - diff;
 
-    if (min < 0) {
+    if (min <= 0) {
       min = 0;
       this.axisYLeft.push(min);
     } else {
@@ -281,9 +282,6 @@ export class ChartComponent implements OnInit {
     diff = max - min;
     let step = diff / 300;
 
-    this.minY2Value = min;
-    this.maxY2Value = max;
-
     this.axisYRight.push(min);
 
     while (min < max) {
@@ -301,7 +299,7 @@ export class ChartComponent implements OnInit {
 
     min = min - diff;
 
-    if (min < 0) {
+    if (min <= 0) {
       min = 0;
       axisY2IntermediateValues.push({coord: this.size.height - 50, value: min});
     } else {
